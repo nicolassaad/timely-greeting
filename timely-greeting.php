@@ -67,7 +67,7 @@ if( isset($_POST['name']) ){
 exit;
 }
 ?>
-<span style="float:left"></span>
+<span id="greeting" style="float:left"></span>
 
 <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
 <!-- Timezone offset Retrieval jQuery -->
@@ -78,11 +78,11 @@ exit;
   console.log( "TZ offset in minutes: " + timezone_offset_minutes); // logging the timezone offset in min
 
   $.ajax({
-        url: '../includes/timely-greeting.php',
+        url: '../includes/timely-greeting.php', // EDIT THIS FILEPATH IF IT DIFFERS FROM YOUR PROJECT'S
         type: 'post',
         data: {name: timezone_offset_minutes},
         success: function(data){
-        $('span').text(data);
+        $('#greeting').text(data);
         }
     });
 </script>
