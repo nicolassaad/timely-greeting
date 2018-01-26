@@ -2,7 +2,7 @@
  
 Timely-Greeting is a PHP plug-in that displays a greeting message based on a user's local time.
 
-This plug-in implements jQuery that allows for the server's timezone to be set dynamically. The original design for this code required a hardcoded timezone which restricted it to only functioning correctly in one set timezone. With a dynamic timezone, user'swho visit your site from all over the world should recieve the correct greeting.
+This plug-in implements jQuery that allows for the server's timezone to be set dynamically. The original design for this code required a hardcoded timezone which restricted it to only functioning correctly in one set timezone. With a dynamic timezone, users who visit your site from all over the world should recieve the correct greeting.
 
 ## To Use:
 * First, download the file, 'timely-greeting.php' and place it inside your project in a folder called 'includes' (which must be in your project's root).
