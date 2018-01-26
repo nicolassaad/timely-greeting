@@ -12,8 +12,8 @@ Example:
 
 ## IMPORTANT!
 * Place this file in your project's 'includes' folder (which should be in your project's  
-root folder). If you place this file somewhere else you will need to update the $.ajax request     
-'url:' with your own custom relative path for this file. Example:
+root folder). If you place this file somewhere else you will need to go inside the code and update the $.ajax request     
+'url' parameter with your own custom relative path for this file. Example:
 
-url: '../includes/timely-greeting.php', // EDIT THIS FILEPATH IF IT DIFFERS FROM YOUR PROJECT'S 
+url: '../includes/timely-greeting.php', // EDIT THIS FILEPATH IF YOURS IS DIFFERENT
     
