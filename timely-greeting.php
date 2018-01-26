@@ -1,26 +1,24 @@
 <?php
 //------ PHP TIMELY GREETING -------//
-//---------- Version 1.3 -----------//
+//---------- Version 1.4 -----------//
 //-------- BY NICOLAS SAAD ---------//
 //-------- nicolassaad.com ---------//
 
 //--DESCRIPTION:------------------------------------------------------------------------------//
 /* A PHP plugin that displays a greeting message based on the user's local time.
+   This plugin detect a user's time zone using jQuery. First, the current user's timezone offset
+   (in minutes) is retrieved and stored in a variable. Next, PHP collects this variable using the
+   $POST. Finally, the timezone is converted into a readable timezone in text-form that the code
+   can then read. */
 
-This plugin detect a user's time zone using jQuery. First, the current user's timezone offset
-(in minutes) is retrieved and stored in a variable. Next, PHP collects this variable using the
-$POST. Finally, the timezone is converted into a readable timezone in text-form that the code
-can then read. */
+//--HOW TO USE:-------------------------------------------------------------------------------//
+/* 1. Download both plugin files and store them in your project.
+   2. Include the file 'timely-greeting.php' at the top of the page you want to use it in.
+   (For example: <?php include('includes/timely-greeting.php'); ?>
+   3. In the exact spot on your page where you wan the greeting to display, add this line:
+   <span id="timelyGreeting">
+   */
 //--------------------------------------------------------------------------------------------//
-
-/***IMPORTANT!**READ BELOW:*******************************************************************
- 1. Place this file in your project's 'includes' folder (which should be in your project's
-root. If you place this file somewhere else you will need to update the $.ajax request
-and replace the 'url:' with your own custom relative path for this file.
-
-2. To use this plug-in, use include this file where you want the greeting to display:
-include('includes/timely-greeting.php') (make sure your file path is correct)
-*********************************************************************************************/
 
 // Handle AJAX request (start)
 if( isset($_POST['name']) ){
@@ -64,25 +62,8 @@ if( isset($_POST['name']) ){
     } elseif ( ($now >= $eveningStart) && ( $now <= $eveningEnd) ) {
          echo $greetings["evening"];
     }
-exit;
 }
+include('js-ajax-php.html');
 ?>
-<span id="greeting" style="float:left"></span>
 
-<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
-<!-- Timezone offset Retrieval jQuery -->
-<script>
-  var timezone_offset_minutes = new Date().getTimezoneOffset();
-  timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
 
-  console.log( "TZ offset in minutes: " + timezone_offset_minutes); // logging the timezone offset in min
-
-  $.ajax({
-        url: '../includes/timely-greeting.php', // EDIT THIS FILEPATH IF IT DIFFERS FROM YOUR PROJECT'S
-        type: 'post',
-        data: {name: timezone_offset_minutes},
-        success: function(data){
-        $('#greeting').text(data);
-        }
-    });
-</script>

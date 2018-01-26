@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"></head>
+    <body>
+    <!-- Begin jQuery -->
+    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <!-- Timezone offset Retrieval jQuery -->
+    <script>
+      var timezone_offset_minutes = new Date().getTimezoneOffset();
+      timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
+
+      console.log( "TZ offset in minutes: " + timezone_offset_minutes); // logging the timezone offset in min
+
+      $.ajax({
+            type: 'post',
+            data: {name: timezone_offset_minutes},
+            success: function(data){
+            $('#timelyGreeting').text(data.substr(0, data.indexOf('<'))) // Stops unwanted code from printing
+            }
+        });
+    </script>
+    </body>
+</html>
