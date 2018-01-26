@@ -1,4 +1,4 @@
-# Timely-Greeting PHP Plug-in v1.1
+# Timely-Greeting PHP Plug-in v1.3
  
 Timely-Greeting is a PHP plug-in that displays a greeting message based on a user's local time.
 
