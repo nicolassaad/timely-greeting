@@ -1,6 +1,6 @@
 <?php
 //------ PHP TIMELY GREETING -------//
-//---------- Version 1.5 -----------//
+//---------- Version 1.6 -----------//
 //-------- BY NICOLAS SAAD ---------//
 //-------- nicolassaad.com ---------//
 
@@ -14,9 +14,9 @@
 //--HOW TO USE:-------------------------------------------------------------------------------//
 /* 1. Download both plugin files and store them in your project.
    2. Include the file 'timely-greeting.php' at the top of the page you want to use it in.
-   (For example: <?php include('includes/timely-greeting.php'); ?>
-   3. In the exact spot on your page where you wan the greeting to display, add this line:
-   <span id="timelyGreeting">
+   Example: <?php include('includes/timely-greeting.php'); ?>
+   3. In the exact spot on your page where you wan the greeting to display, add this line of code:
+   <span id="timelyGreeting"></span>
    */
 //--------------------------------------------------------------------------------------------//
 
@@ -64,5 +64,5 @@ if( isset($_POST['name']) ){
     }
  exit;
 }
-include('js-ajax-php.html');
+include('timezone-ajax.html');
 ?>
