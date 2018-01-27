@@ -62,6 +62,7 @@ if( isset($_POST['name']) ){
     } elseif ( ($now >= $eveningStart) && ( $now <= $eveningEnd) ) {
          echo $greetings["evening"];
     }
+// exit; //putting exit here stopped my code from printing to the page. Now I use substr(0, data.indexOf('<')) to cut off the extra code from being sent in the ajax request. I need to figure out how to handle the data being sent.
 }
 include('js-ajax-php.html');
 ?>

@@ -15,9 +15,11 @@
             type: 'post',
             data: {name: timezone_offset_minutes},
             success: function(data){
-            $('#timelyGreeting').text(data.substr(0, data.indexOf('<'))) // Stops unwanted code from printing
+            $('#timelyGreeting').text(data.substr(0, data.indexOf('<'))) //substr() isolates the greeting from the accidental code dumping
             }
+          // Why is my code printing to the page? How can I make the 'data' var more specific so it grabs the right values?
         });
     </script>
     </body>
 </html>
+
