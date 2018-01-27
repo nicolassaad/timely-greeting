@@ -13,6 +13,4 @@ Example:
 
 * Then, add this line in the exact spot you want your greeting to go:
 
-Example:
-\<span id="timelyGreeting"></span>
-
+\<span id="timelyGreeting"></span> //greeting message generates here
