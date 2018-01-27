@@ -11,15 +11,24 @@
 
       console.log( "TZ offset in minutes: " + timezone_offset_minutes); // logging the timezone offset in min
 
-      $.ajax({
-            type: 'post',
-            data: {name: timezone_offset_minutes},
-            success: function(data){
-            $('#timelyGreeting').text(data.substr(0, data.indexOf('<'))) //substr() isolates the greeting from the accidental code dumping
-            }
-          // Why is my code printing to the page? How can I make the 'data' var more specific so it grabs the right values?
-        });
+    function fetchdata(){
+     $.ajax({
+      type: 'post',
+      data: {name: timezone_offset_minutes},
+      success: function(data){
+       // Perform operation on the return value
+       $('#timelyGreeting').text(data)
+      },
+      complete: function(data) {
+        setTimeout(fetchdata, 50);
+      }
+     });
+    }
+
+    $(document).ready(function(){
+      setTimeout(fetchdata, 50);
+    });
     </script>
-    </body>
+  </body>
 </html>
 
