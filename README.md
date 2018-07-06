@@ -1,4 +1,4 @@
-# Timely-Greeting PHP Plug-in v1.5
+# Timely-Greeting PHP Plug-in v1.8
  
 Timely-Greeting is a PHP plug-in that displays a greeting message based on a user's local time.
 
@@ -13,4 +13,4 @@ Example:
 
 * Then, add this line in the exact spot you want your greeting to go:
 
-\<span id="timelyGreeting"></span> //greeting message generates here
+\<span class="timelyGreeting"></span> //greeting message generates here
