@@ -6,10 +6,37 @@
     <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
     <!-- Timezone offset Retrieval jQuery -->
     <script>
-      var timezone_offset_minutes = new Date().getTimezoneOffset();
-      timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes;
+      var d = new Date();
+      var month = d.getMonth();
+      var day = d.getDate();
+      var dow = d.getDay();
 
-      console.log( "TZ offset in minutes: " + timezone_offset_minutes); // logging the timezone offset in min
+      var timezone_offset_minutes = new Date().getTimezoneOffset();
+      timezone_offset_minutes = timezone_offset_minutes == 0 ? 0 : -timezone_offset_minutes; // if the offset is 0 leave it alone or else negate the offset value (example: 100 becomes -100).
+
+      console.log( "User's local TZ offset in minutes: " + timezone_offset_minutes); // logging the user's timezone offset in min
+
+      // Checks if DST is on and subtracts 60 minutes from the UTC offset to correctly adjust for Daylight Savings
+      if (isDST(day, month, dow)) { // isDST returns "true"
+          timezone_offset_minutes = timezone_offset_minutes - 60;
+          console.log("DST in North America is Currently ON (Started on the 2nd Sun of Mar & will end on the 1st Sun of Nov)");
+      } else { // isDST returns "false"
+          console.log("DST in North America is Currently OFF");
+      }
+
+      // Function that checks if DST in North America is on or off. Returns true for on and false for off.
+      function isDST(day, month, dow) {
+        //January, february, and december are out.
+        if (month < 2 || month > 10) { return false; }
+        //April to October are in
+        if (month > 2 && month < 10) { return true; }
+        var previousSunday = day - dow; //Getting the previous sunday day by subtracting the dow from the day of month.
+        //In march, we are DST if our previous sunday was on or after the 8th.
+        if (month == 2) { return previousSunday >= 8; }
+        //In november we must be before the first sunday to be in dst.
+        //That means the previous sunday must be before the 1st.
+        return previousSunday <= 0;
+      }
 
       function fetchdata(){
       $.ajax({
@@ -17,14 +44,14 @@
       data: {name: timezone_offset_minutes},
       success: function(data){
         // Perform operation on the return value
-        $('#timelyGreeting').text(data)
+        $('.timelyGreeting').text(data.substr(0, data.indexOf('<'))) /* I'm using substr() here to prevent extra code from being sent in the request. The alternative approach is to add 'exit;' at the end of if( isset($_POST['name']) in timely-greeting.php */
        }
      });
     }
 
     $(document).ready(function(){
      fetchdata(); // executing fetchdata() first so the greeting displays when the page loads
-     setInterval(fetchdata, 1000); // interval set to 1 second. updates the greeting live on the page without reloading
+     setInterval(fetchdata, 30000); // interval set to update greeting every 30 seconds. Greeting is updated live on the page without reloading
     });
     </script>
   </body>
