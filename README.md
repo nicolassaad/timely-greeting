@@ -1,4 +1,4 @@
-# Timely-Greeting PHP Plug-in v1.8
+# Timely-Greeting PHP Plug-in v2.0
  
 Timely-Greeting is a PHP plug-in that displays a greeting message based on a user's local time.
 
@@ -6,10 +6,14 @@ There are three greetings: Good Morning (00:00AM - 11:59AM), Good Afternoon (12:
 
 Feel free to customize the greetings and times to your preference. 
 
-This plug-in implements jQuery that allows for the server's timezone to be set dynamically. The original design for this code required a hardcoded timezone which restricted it to only functioning correctly in one set timezone. With a dynamic timezone, users who visit your site from all over the world should recieve the correct greeting. The greeting also updates live on the page without having to reload it.
+This plugin detect a user's time zone using jQuery, where the current user's timezone offset
+(in minutes) is retrieved and stored in a variable. Next, PHP collects this variable using
+$POST. Finally, the timezone is converted into a readable timezone that the code can use to
+print out the appropriate greeting for the user's time of day. 
+The result is a dynamic greeting that accounts for whether or not your region has Daylight Savings Time.
 
 ## To Use:
-* First, download both files: 'timely-greeting.php' and 'js-ajax-php.html' and place them TOGETHER inside your project.
+* First, download the plugin file 'timely-greeting.php' and place it inside your project.
 * To use this plug-in in your project, include the 'timely-greeting.php' file using the include() function at the top of the page you wan the greeting to go in.
 
 Example:
